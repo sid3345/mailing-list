@@ -1,0 +1,22 @@
+Instructions to run project:
+1. Download and unzip the project in a folder.
+2. Open another terminal and type "cd client" and then "npm install" to install node modules.
+3. Open a new terminal / cmd and type "npm install" to install node modules and then type "npm run dev".
+4. The application will automatically launch on port 3000.
+
+
+Features:
+- Google auth (passport)
+- Stack (MERN):
+	- MongoDB Atlas (DB on Cloud)
+	- Express
+	- ReactJS (front end) / Redux
+	- NodeJS (backend)
+- SendGrid API for emails
+
+
+Admin login instruction:
+I have used Google Authenticator for login.
+Thus, I cannot share my Gmail credentials as Gmail presently requires mobile no. for verification and its dangerous to share Gmail credentials.
+
+Thus, for login as admin, kindly change line 16 in authRoutes.js to your email, and then you can log into that account as admin and can use admin functionalities.
