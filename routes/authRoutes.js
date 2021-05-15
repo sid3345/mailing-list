@@ -13,7 +13,7 @@ module.exports = app => {
     passport.authenticate('google'),
     (req, res) => {
       console.log("auth" , req.user);
-      if(req.user.googleId == "akashviahwakarma98@gmail.com" || req.user.googleId == "sid3345@gmail.com"){
+      if(req.user.googleId == "akashviahwakarma98@gmail.com"){
         res.redirect('/surveys');
       }
       else{
