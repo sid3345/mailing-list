@@ -9,6 +9,7 @@ const requireCredits = require('../middlewares/requireCredits')
 const Mailer = require('../services/Mailer')
 const surveyTemplate = require('../services/emailTemplates/surveyTemplate')
 const { compact } = require('lodash')
+const welcomTemplate = require('../services/emailTemplates/welcomTemplate')
 
 const Survey = mongoose.model('surveys')
 
@@ -73,6 +74,7 @@ module.exports = app =>{
         //Great Place to send an email
 
         const mailer = new Mailer(survey , surveyTemplate(survey))
+        const welcomeMailer = new Mailer(survey , welcomTemplate(survey))
 
         try{
             await mailer.send()
