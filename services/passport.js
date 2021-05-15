@@ -3,7 +3,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const mongoose = require('mongoose');
 const keys = require('../config/keys');
 const MailerTwo = require('../services/MailerTwo')
-const surveyTemplate = require('../services/emailTemplates/surveyTemplate')
+const welcomTemplate = require('../services/emailTemplates/welcomTemplate')
 
 
 
@@ -39,14 +39,14 @@ passport.use(
         title : "Welcome to our website",    // identical value can be condensed in ES6
         subject : "Welcome",
         body : "Welcome",
-        recipients : [profile.emails[0].value],
+        recipients : [{email : profile.emails[0].value}],
     }
 
       const user = await new User({ googleId: profile.emails[0].value }).save();
-      const mailer = new MailerTwo(survey , surveyTemplate(survey))
+      const mailer = new MailerTwo(survey , welcomTemplate())
 
       try{
-        mailer.send()
+        await mailer.send()
         // await survey.save()
         // req.user.credits -= 1
         // const user = await req.user.save()

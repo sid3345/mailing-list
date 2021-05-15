@@ -10,7 +10,10 @@ class MailerTwo extends helper.Mail {
     this.from_email = new helper.Email('smartgainventure@gmail.com')
     this.subject = subject 
     this.body = new helper.Content('text/html' , content)
+    console.log(recipients)
     this.recipients = this.formatAddresses(recipients)
+    console.log("kbjqw",this.recipients)
+    
 
     this.addContent(this.body)
     this.addClickTracking()
@@ -40,15 +43,15 @@ class MailerTwo extends helper.Mail {
         })
         this.addPersonalization(personalize)
     }
-
     async send(){
+        console.log("Inside Send")
         const request = this.sgApi.emptyRequest({
             method : 'POST',
             path : '/v3/mail/send',
             body : this.toJSON()
         })
         const response = await this.sgApi.API(request)
-        console.log(response)
+        console.log("kvwqd",response)
         return response
     }
 }

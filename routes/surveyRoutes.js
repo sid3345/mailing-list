@@ -71,18 +71,22 @@ module.exports = app =>{
             _user: req.user.id,
             dateSent : Date.now()
         })
+
+        console.log("survey",survey)
         //Great Place to send an email
 
         const mailer = new Mailer(survey , surveyTemplate(survey))
-        const welcomeMailer = new Mailer(survey , welcomTemplate(survey))
+        // const welcomeMailer = new Mailer(survey , welcomTemplate(survey))
 
         try{
-            await mailer.send()
-            await survey.save()
-            req.user.credits -= 1
-            const user = await req.user.save()
 
-            res.send(user)
+            console.log("try")
+            await mailer.send()
+            // await survey.save()
+            // req.user.credits -= 1
+            // const user = await req.user.save()
+
+            // res.send(user)
         }
         catch (err){
             res.status(422).send(err)
