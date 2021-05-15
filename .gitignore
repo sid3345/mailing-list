@@ -102,9 +102,7 @@ dist
 
 # TernJS port file
 .tern-port
-client/.env.development
-client/.env.production
-config/dev.js
+
 package-lock.json
 client/package-lock.json
 client/package-lock.json
