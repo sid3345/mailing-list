@@ -9,9 +9,9 @@ const requireLogin = require('../middlewares/requireLogin')
 const Mailer = require('../services/Mailer')
 const surveyTemplate = require('../services/emailTemplates/surveyTemplate')
 const { compact } = require('lodash')
-const welcomTemplate = require('../services/emailTemplates/welcomTemplate')
 
 const Survey = mongoose.model('surveys')
+const User = mongoose.model('users')
 
 module.exports = app =>{
 
@@ -61,18 +61,22 @@ module.exports = app =>{
 
 
     app.post('/api/surveys' ,  requireLogin , async (req ,res) =>{
-        const { title , subject , body , recipients } = req.body
+        const { title , subject , body } = req.body
+
+        const recipients= await User.find( {}, { googleId: 1, _id:0 } )
+
+        //console.log('recipients: ',recipients);
 
         const survey = new Survey({
             title,    // identical value can be condensed in ES6
             subject,
             body,
-            recipients : recipients.split(',').map(email => ({email: email.trim()})),
+            recipients : recipients.map(email => ({email: email.googleId})),
             _user: req.user.id,
             dateSent : Date.now()
         })
 
-        
+        //console.log('survey: ', survey);
         //Great Place to send an email
 
         const mailer = new Mailer(survey , surveyTemplate(survey))

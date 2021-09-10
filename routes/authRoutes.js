@@ -13,7 +13,7 @@ module.exports = app => {
     passport.authenticate('google'),
     (req, res) => {
       console.log("auth" , req.user);
-      if(req.user.googleId == "akashviahwakarma98@gmail.com"){
+      if(req.user.googleId == "sid3345@gmail.com"){ //change email over here to your mail to assign that as admin email
         res.redirect('/surveys');
       }
       else{

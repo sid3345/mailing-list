@@ -21,12 +21,12 @@ class Header extends Component {
     return (
       
         <nav>
-        <div className="nav-wrapper" >
+        <div className="nav-wrapper #536dfe indigo accent-2" >
           <Link style = {{marginLeft : '10px'}}
             to={this.props.auth ? '/surveys' : '/'}
-            className="left brand-logo"
+            className="brand-logo left"
           >
-            Web Developers
+            Siddharth Sinha's Mailing List
           </Link>
           <ul className="right">
             {this.renderContent()}

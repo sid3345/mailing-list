@@ -36,7 +36,7 @@ class SurveyForm extends Component {
     }
 }
 
-function validate(values){
+/* function validate(values){
     const errors = {}
 
     errors.recipients = validateEmails(values.recipients || '')
@@ -51,10 +51,9 @@ function validate(values){
 
     
     return errors
-}
+}*/
 
 export default reduxForm({
-    validate,
     form : 'surveyForm',
     destroyOnUnmount : false               //while reviewF form . It wont destroy the from content.
 }) (SurveyForm)
