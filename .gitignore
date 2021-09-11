@@ -106,4 +106,5 @@ dist
 package-lock.json
 client/package-lock.json
 client/package-lock.json
-config/dev.js
+config/
+problem statement/
