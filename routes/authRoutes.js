@@ -1,4 +1,5 @@
 const passport = require('passport');
+const keys = require('../config/keys')
 
 module.exports = app => {
   app.get(
@@ -13,7 +14,7 @@ module.exports = app => {
     passport.authenticate('google'),
     (req, res) => {
       console.log("auth" , req.user);
-      if(req.user.googleId == "sid3345@gmail.com"){ //change email over here to your mail to assign that as admin email
+      if(req.user.googleId == keys.adminMail){ //change email over here to your mail to assign that as admin email
         res.redirect('/surveys');
       }
       else{

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-
+const keys = require('../config/keys')
 
 class Header extends Component {
+  
   renderContent() {
     switch (this.props.auth) {
       case null:
@@ -23,7 +24,7 @@ class Header extends Component {
         <nav>
         <div className="nav-wrapper #536dfe indigo accent-2" >
           <Link style = {{marginLeft : '10px'}}
-            to={this.props.auth ? '/surveys' : '/'}
+            to={this.props.auth && this.props.auth.googleId == keys.adminMail ? '/surveys' : '/'}
             className="brand-logo left"
           >
             Siddharth Sinha's Mailing List
